@@ -15,13 +15,14 @@ export function buildWebpack(options: BuildOptions): webpack.Configuration {
     entry: options.paths.entry,
     output: {
       path: options.paths.output,
-      filename: "[name].[contenthash].js",
+      filename: "[name].[contenthash:8].js",
+      assetModuleFilename: "assets/[contenthash:6]-[name][ext]",
       clean: true,
     },
     module: {
       rules: buildLoaders(options),
     },
-    resolve: buildResolvers(),
+    resolve: buildResolvers(options),
     plugins: buildPlugins(options),
     devServer: buildDevServer(options),
     devtool: isDev && "inline-source-map",

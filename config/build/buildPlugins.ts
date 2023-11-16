@@ -5,6 +5,7 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { BuildOptions } from "./types";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
 
 export function buildPlugins(
   options: BuildOptions
@@ -46,6 +47,14 @@ export function buildPlugins(
     new HtmlWebpackPlugin({
       template: options.paths.html,
       favicon: options.paths.favicon,
+    })
+  );
+
+  plugins.push(
+    new CopyPlugin({
+      patterns: [
+        { from: options.paths.locales, to: options.paths.localesOutput },
+      ],
     })
   );
 

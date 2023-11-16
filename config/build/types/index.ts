@@ -4,6 +4,8 @@ export interface BuildPaths {
   output: string;
   src: string;
   favicon: string;
+  locales: string;
+  localesOutput: string;
 }
 
 export type BuildMode = "production" | "development";

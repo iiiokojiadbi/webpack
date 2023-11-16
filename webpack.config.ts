@@ -16,6 +16,8 @@ export default (env: EnvVariables) => {
     html: path.resolve(__dirname, "public", "index.html"),
     src: path.resolve(__dirname, "src"),
     favicon: path.resolve(__dirname, "public", "favicon.ico"),
+    locales: path.resolve(__dirname, "public", "locales"),
+    localesOutput: path.resolve(__dirname, "build", "locales"),
   };
 
   return buildWebpack({

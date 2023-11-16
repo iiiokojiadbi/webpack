@@ -45,6 +45,7 @@ export function buildPlugins(
   plugins.push(
     new HtmlWebpackPlugin({
       template: options.paths.html,
+      favicon: options.paths.favicon,
     })
   );
 

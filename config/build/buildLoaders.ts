@@ -9,20 +9,26 @@ export function buildLoaders(
 ): webpack.ModuleOptions["rules"] {
   const isDev = options.mode === "development";
 
-  const tsLoader = {
+  // const tsLoader = {
+  //   test: /\.tsx?$/,
+  //   exclude: /node_modules/,
+  //   use: [
+  //     {
+  //       loader: "ts-loader",
+  //       options: {
+  //         transpileOnly: true,
+  //         getCustomTransformers: () => ({
+  //           before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+  //         }),
+  //       },
+  //     },
+  //   ],
+  // };
+
+  const babelLoader = {
     test: /\.tsx?$/,
     exclude: /node_modules/,
-    use: [
-      {
-        loader: "ts-loader",
-        options: {
-          transpileOnly: true,
-          getCustomTransformers: () => ({
-            before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
-          }),
-        },
-      },
-    ],
+    use: "babel-loader",
   };
 
   const scssLoader = {
@@ -80,5 +86,11 @@ export function buildLoaders(
     ],
   };
 
-  return [tsLoader, scssLoader, svgLoader, assetLoader];
+  return [
+    // tsLoader,
+    babelLoader,
+    scssLoader,
+    svgLoader,
+    assetLoader,
+  ];
 }

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./tsc/",
     "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",

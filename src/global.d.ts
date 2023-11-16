@@ -17,3 +17,6 @@ declare module "*.svg" {
   const SVG: React.FC<React.SVGProps<SVGSVGElement>>;
   export default SVG;
 }
+
+declare const _PLATFORM_: "desktop" | "mobile";
+declare const _ENV_: "production" | "development";

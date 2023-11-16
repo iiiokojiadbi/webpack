@@ -6,10 +6,12 @@ export interface BuildPaths {
 }
 
 export type BuildMode = "production" | "development";
+export type BuildPlatform = "desktop" | "mobile";
 
 export interface BuildOptions {
   mode: BuildMode;
   port: number;
   paths: BuildPaths;
-  analyzer?: boolean;
+  analyzer: boolean;
+  platform: BuildPlatform;
 }

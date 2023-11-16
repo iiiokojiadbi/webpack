@@ -1,8 +1,10 @@
-import webpack from "webpack";
+import webpack, { DefinePlugin } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { BuildOptions } from "./types";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 export function buildPlugins(
   options: BuildOptions
@@ -14,6 +16,10 @@ export function buildPlugins(
 
   if (isDev) {
     plugins.push(new webpack.ProgressPlugin());
+
+    plugins.push(new ForkTsCheckerWebpackPlugin());
+
+    plugins.push(new ReactRefreshWebpackPlugin());
   }
 
   if (isProd) {
@@ -28,6 +34,13 @@ export function buildPlugins(
   if (options.analyzer) {
     plugins.push(new BundleAnalyzerPlugin());
   }
+
+  plugins.push(
+    new DefinePlugin({
+      _PLATFORM_: JSON.stringify(options.platform),
+      _ENV_: JSON.stringify(options.mode),
+    })
+  );
 
   plugins.push(
     new HtmlWebpackPlugin({

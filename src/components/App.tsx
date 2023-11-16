@@ -13,7 +13,7 @@ export const App = () => {
         <img src={nodejsImage} alt="nodejs image" />
       </div>
 
-      <h1>main</h1>
+      <h1>{_PLATFORM_}</h1>
 
       <Outlet />
     </div>

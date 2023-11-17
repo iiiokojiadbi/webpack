@@ -3,6 +3,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshTypeScript from "react-refresh-typescript";
 
 import { BuildOptions } from "./types";
+import { buildBabelLoader } from "./babel/buildBabelLoader";
 
 export function buildLoaders(
   options: BuildOptions
@@ -25,11 +26,7 @@ export function buildLoaders(
   //   ],
   // };
 
-  const babelLoader = {
-    test: /\.tsx?$/,
-    exclude: /node_modules/,
-    use: "babel-loader",
-  };
+  const babelLoader = buildBabelLoader(options);
 
   const scssLoader = {
     test: /\.s?css$/i,

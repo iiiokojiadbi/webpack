@@ -4,7 +4,7 @@ import nodejsImage from "@/assets/images/nodejs.png?url";
 
 export const App = () => {
   return (
-    <div className={cls.App}>
+    <div data-testid={"DataTestId.App"} className={cls.App}>
       <Link to="/about">about</Link>
       <br />
       <Link to="/shop">shop</Link>
